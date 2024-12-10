@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     @PostMapping("/Register")
-    public ResponseEntity<RegisterDto> Register(
-
-         @Valid    @RequestBody RegisterDto registerDto)
+    public ResponseEntity<RegisterDto> Register(@Valid @RequestBody RegisterDto registerDto)
     {
 
 
