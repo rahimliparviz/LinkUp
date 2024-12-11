@@ -12,3 +12,8 @@ spring:
   h2:
     console:
       true
+
+
+  jwt:
+    secret:aaaaaaaaaaaaa44444444444aaaaaaaaaaaaa
+
