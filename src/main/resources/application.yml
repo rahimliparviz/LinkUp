@@ -11,9 +11,9 @@ spring:
       ddl-auto: create
   h2:
     console:
-      true
+      enabled: true
 
 
-  jwt:
-    secret:aaaaaaaaaaaaa44444444444aaaaaaaaaaaaa
-
+  elasticsearch:
+    uris:
+      - http://localhost:9200

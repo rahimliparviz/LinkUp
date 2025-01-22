@@ -3,18 +3,18 @@ package org.rahimliparviz.linkup.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.rahimliparviz.linkup.model.dto.RegisterDto;
-import org.rahimliparviz.linkup.service.AuthService;
+import org.rahimliparviz.linkup.service.AuthServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/Auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
-    private final AuthService authService;
+    private final AuthServiceImpl authService;
 
-    @PostMapping("/Register")
+    @PostMapping("/register")
     public ResponseEntity<RegisterDto> Register(@Valid @RequestBody RegisterDto registerDto)
     {
 
@@ -22,12 +22,5 @@ public class AuthController {
         return  ResponseEntity.ok(registerDto);
     }
 
-    @GetMapping("/h/{id}")
-    public String Register2(@PathVariable String id)
-    {
-
-        return id;
-        //return  ResponseEntity.ok().build();
-    }
 
 }
