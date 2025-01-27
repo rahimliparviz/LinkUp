@@ -3,7 +3,7 @@ package org.rahimliparviz.linkup.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.rahimliparviz.linkup.model.dto.RegisterDto;
-import org.rahimliparviz.linkup.service.AuthServiceImpl;
+import org.rahimliparviz.linkup.service.concrete.AuthServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

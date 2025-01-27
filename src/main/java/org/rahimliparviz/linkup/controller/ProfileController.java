@@ -2,7 +2,8 @@ package org.rahimliparviz.linkup.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.rahimliparviz.linkup.entity.Profile;
-import org.rahimliparviz.linkup.service.ProfileServiceImpl;
+import org.rahimliparviz.linkup.model.dto.profile.GetProfileDto;
+import org.rahimliparviz.linkup.service.concrete.ProfileServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,7 @@ public class ProfileController {
 
     final private ProfileServiceImpl profileService;
     @PostMapping
-    public ResponseEntity createOrUpdatePerson(@RequestBody Profile profile) {
+    public ResponseEntity createOrUpdateProfile(@RequestBody Profile profile) {
         profileService.create(profile);
         return ResponseEntity.ok().build();
     }
@@ -21,7 +22,7 @@ public class ProfileController {
 
     // Get All Persons
     @GetMapping
-    public ResponseEntity<Iterable<Profile>> getAllPersons() {
+    public ResponseEntity<Iterable<GetProfileDto>> getAllProfiles() {
         return ResponseEntity.ok(profileService.getAll());
     }
 

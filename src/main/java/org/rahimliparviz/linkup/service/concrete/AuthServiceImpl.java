@@ -1,4 +1,4 @@
-package org.rahimliparviz.linkup.service;
+package org.rahimliparviz.linkup.service.concrete;
 
 import lombok.RequiredArgsConstructor;
 import org.rahimliparviz.linkup.config.JwtService;
@@ -7,6 +7,7 @@ import org.rahimliparviz.linkup.model.Role;
 import org.rahimliparviz.linkup.model.dto.LoginDto;
 import org.rahimliparviz.linkup.model.dto.RegisterDto;
 import org.rahimliparviz.linkup.repository.UserRepository;
+import org.rahimliparviz.linkup.service.AuthService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class AuthServiceImpl implements AuthService{
+public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;

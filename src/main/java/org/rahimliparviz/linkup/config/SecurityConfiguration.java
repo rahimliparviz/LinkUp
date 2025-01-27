@@ -22,29 +22,41 @@ public class SecurityConfiguration {
 
     private final AuthenticationProvider authenticationProvider;
     private final JwtFilter jwtFilter;
-
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(
-                        r->r
-                                .requestMatchers("/api/auth/**").permitAll()
-                                .requestMatchers(
-                                        "/swagger-ui/**", // Swagger UI resources
-                                        "/v3/api-docs/**", // OpenAPI spec
-                                        "/swagger-ui.html", // Swagger HTML
-                                        "/swagger-resources/**", // Swagger configuration
-                                        "/webjars/**" // Swagger's webjars
-                                ).permitAll()
-                                .anyRequest()
-                                .authenticated())
-                .sessionManagement(s->s
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                .csrf(AbstractHttpConfigurer::disable) // Disable CSRF
+                .authorizeHttpRequests(r -> r
+                        .anyRequest().permitAll() // Allow all requests
+                )
+                .sessionManagement(s -> s
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)); // Keep stateless session management
 
         return httpSecurity.build();
     }
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+//
+//
+//        httpSecurity
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests(
+//                        r->r
+//                                .requestMatchers("/api/auth/**").permitAll()
+//                                .requestMatchers(
+//                                        "/swagger-ui/**", // Swagger UI resources
+//                                        "/v3/api-docs/**", // OpenAPI spec
+//                                        "/swagger-ui.html", // Swagger HTML
+//                                        "/swagger-resources/**", // Swagger configuration
+//                                        "/webjars/**" // Swagger's webjars
+//                                ).permitAll()
+//                                .anyRequest()
+//                                .authenticated())
+//                .sessionManagement(s->s
+//                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .authenticationProvider(authenticationProvider)
+//                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+//
+//        return httpSecurity.build();
+//    }
 }
